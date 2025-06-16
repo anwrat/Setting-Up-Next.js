@@ -4,7 +4,8 @@ import Link from 'next/link';
 export default function Navbar(){
     return(
         <div>
-            <h1>Navbar</h1>
+            <Link href="/">Home Page</Link>
+            <Link href="/about">About Page</Link>
         </div>
     );
 }
