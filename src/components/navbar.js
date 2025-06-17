@@ -1,6 +1,5 @@
 //For navigation in NextJS
 import Link from 'next/link';
-import Vercellogo from 'next/image';
 
 export default function Navbar(){
     return(
@@ -13,6 +12,8 @@ export default function Navbar(){
                     <div className='flex gap-4'>
                         <Link href="/">Home page</Link>
                         <Link href="/about">About page</Link>
+                        <Link href="/props">Props</Link>
+                        <Link href="/state">State</Link>
                         <Link href="/contact">Contact page</Link>
                     </div>
                 </div>
