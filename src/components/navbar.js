@@ -4,18 +4,19 @@ import Vercellogo from 'next/image';
 
 export default function Navbar(){
     return(
-        <div className='text-white bg-black mb-4'>
-            <div className='container flex items-center mx-auto justify-between'>
-                <div className='flex flex-col items-center'>
-                    <Vercellogo src = '/vercel.svg' alt = "Vercel logo" width={50} height={50}/>
-                    <span>Vercel</span>
-                </div>
-                <div className='flex gap-4'>
-                    <Link href="/" className='font-bold hover:underline'>Home</Link>
-                    <Link href="/about" className='font-bold hover:underline'>About</Link>
-                    <Link href="/contact" className='font-bold hover:underline'>Contact</Link>
+        <nav className='bg-gray-800 text-white mb-4'>
+            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+                <div className='flex justify-between items-center h-16'>
+                    <div className='w-1/4'>
+                        <h1>LOGO</h1>
+                    </div>
+                    <div className='flex gap-4'>
+                        <Link href="/">Home page</Link>
+                        <Link href="/about">About page</Link>
+                        <Link href="/contact">Contact page</Link>
+                    </div>
                 </div>
             </div>
-        </div>
+        </nav>
     );
 }
