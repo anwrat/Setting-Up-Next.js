@@ -8,7 +8,8 @@ export default function Home(){
       <ol>
         <li>NextJS</li>
       </ol>
-      <Button />
+      <Button text="Click Me"/>
+      <Button text="Don't Click Me"/>
     </div>
   )
 }
