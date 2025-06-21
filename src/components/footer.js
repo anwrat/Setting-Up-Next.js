@@ -1,7 +1,5 @@
 export default function Footer(){
     return(
-        <div className="bg-gray-800 text-white">
-            <p>This is footer. Complete the footer!!!</p>
-        </div>
+        <footer className="text-white bg-gray-800 bottom-0">This is the footer</footer>
     );
 }
