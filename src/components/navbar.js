@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Navbar(){
     return(
-        <nav className='text-black bg-white border-b-2'>
+        <nav className='text-black bg-white border-b-2 mb-4'>
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                 <div className='flex justify-between items-center h-16'>
                     <div className='w-1/4 py-4'>
