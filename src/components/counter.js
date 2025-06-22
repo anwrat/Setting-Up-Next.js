@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function Counter(){
     const [count,setCount] = useState(0);
     return(
-        <div className="mx-auto text-center border-2">
+        <div className="mx-auto border-2 p-5 rounded-2xl">
             <h1 className="font-bold text-2xl">Counter Component</h1>
             <p className="text-blue-500 text-2xl">Count: {count}</p>
             {/*Buttons*/}

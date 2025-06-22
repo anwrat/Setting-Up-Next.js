@@ -13,9 +13,9 @@ export default function Navbar(){
                     <div className='flex gap-4'>
                         <Link href="/">Home page</Link>
                         <Link href="/about">About page</Link>
+                        <Link href="/contact">Contact page</Link>
                         <Link href="/props">Props</Link>
                         <Link href="/state">State</Link>
-                        <Link href="/contact">Contact page</Link>
                         <Link href="/colorchange">ColorChange</Link>
                     </div>
                 </div>

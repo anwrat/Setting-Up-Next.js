@@ -5,9 +5,11 @@ export default function State(){
         <div>
             <div className="text-center mb-4">
                 <h1 className="font-bold text-4xl">React State Demo</h1>
-                <p>Learn how useState works in React</p>
+                <p className="text-gray-500">Learn how useState works in React</p>
             </div>
-            <Counter />
+            <div className="flex justify-center">
+                <Counter />
+            </div>
         </div>
     ); 
 }
