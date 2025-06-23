@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function ColorChange(){
     const [theme,changetheme] = useState("Light");
     return(
-        <div className="text-center">
+        <div className="text-center h-screen">
             <div className={`w-fit mx-auto p-4 text-center border-2 rounded-2xl ${theme === "Dark" ? "bg-black text-white" : "bg-white text-black"}`}>
                 <h1 className="font-bold text-2xl">Theme Toggle Card</h1>
                 <h1>Current Mode: {theme} Mode</h1>
