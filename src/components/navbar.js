@@ -24,6 +24,7 @@ export default function Navbar(){
                             
                         </div>
                         <Link href="/contact">Contact</Link>
+                        <Link href="/resources">Resources</Link>
                     </div>
                 </div>
             </div>
