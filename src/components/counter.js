@@ -1,8 +1,11 @@
 'use client';
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 export default function Counter(){
     const [count,setCount] = useState(0);
+    useEffect(()=>{
+        document.title = `You clicked ${count} times`;
+    });
     return(
         <div className="mx-auto border-2 p-5 rounded-2xl">
             <h1 className="font-bold text-2xl">Counter Component</h1>
