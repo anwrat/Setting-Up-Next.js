@@ -1,0 +1,63 @@
+'use client';
+import { useState, useEffect } from "react";
+
+export default function Products(){
+    const [products,setProducts] = useState([]);
+    const [title,setTitle] = useState('');
+    const [description,setDescription] = useState('');
+    const [price,setPrice] = useState('');
+    const fetchProducts=async()=>{
+        const response = await fetch("http://localhost:8000/api/products");
+        const data = await response.json();
+        setProducts(data);
+    }
+    const addProducts=async()=>{
+        const response = await fetch("http://localhost:8000/api/products",{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+                'Accept':'applicatipn/json',
+            },
+            body:JSON.stringify({title,description,price}),
+        });
+        const data = await response.json();
+        setProducts([...products,data])
+    }
+    const deleteProducts=async(id)=>{
+        const response = await fetch(`http://localhost:8000/api/products/${id}`,{
+            method:'DELETE',
+            headers:{
+                'Content-Type':'application/json',
+                'Accept':'applicatipn/json',
+            },
+        });
+        const data = await response.json();
+        setProducts(products.filter((product)=>product.id!=id));
+    }
+    useEffect(()=>{
+        fetchProducts();
+    },[]);
+    return(
+        <div>
+            <h1>This is products page</h1>
+            <div>
+                <input value={title} onChange={(e)=>{setTitle(e.target.value)}} className="border-2 rounded-md p-2" type = "text" placeholder ="Enter name of product"/>
+                <input value={description} onChange={(e)=>{setDescription(e.target.value)}} className="border-2 rounded-md p-2" type = "text" placeholder ="Enter the description"/>
+                <input value={price} onChange={(e)=>{setPrice(e.target.value)}} className="border-2 rounded-md p-2" type = "number" placeholder = "Enter the price " />
+                <button className="bg-blue-500 text-white rounded-md p-2" onClick={addProducts}>
+                    Add Product
+                </button>
+            </div>
+            <ul>
+                {products.map((product)=>(
+                    <li key = {product.id}>
+                        <span>
+                            {product.title} - {product.price}
+                            <button onClick={()=>deleteProducts(product.id)} className='bg-red-500 text-white rounded-md p-2'>Delete</button>
+                            </span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+}
