@@ -9,6 +9,8 @@ export default function Products(){
     //For setting a id of the product to be edited
     const [editingProductId, seteditingProductId] = useState(null);
 
+    const [validationErrors, setValidationErrors] = useState({});
+
     const fetchProducts=async()=>{
         const response = await fetch("http://localhost:8000/api/products");
         const data = await response.json();
@@ -24,7 +26,16 @@ export default function Products(){
             body:JSON.stringify({title,description,price}),
         });
         const data = await response.json();
-        setProducts([...products,data])
+        if(response.ok){
+            setProducts([...products,data]);
+            setTitle('');
+            setDescription('');
+            setPrice('');
+            setValidationErrors({});
+        }
+        else{
+            setValidationErrors(data.errors);
+        }
     }
 
     const editProducts = async(id)=>{
@@ -45,12 +56,18 @@ export default function Products(){
             body:JSON.stringify({title,description,price}),
         });   
         const data = await response.json();
-        setProducts(products.map((product)=>product.id==id? data:product));
-        //Making the text fields empty after updating and the editingproudctid to null
-        seteditingProductId(null);
-        setTitle('');
-        setDescription('');
-        setPrice('');
+        if(response.ok){
+            setProducts(products.map((product)=>product.id==id? data:product));
+            //Making the text fields empty after updating and the editingproudctid to null
+            seteditingProductId(null);
+            setTitle('');
+            setDescription('');
+            setPrice('');
+            setValidationErrors({});
+        }
+        else{
+            setValidationErrors(data.errors);
+        }
     }
 
     const deleteProducts=async(id)=>{
@@ -72,8 +89,11 @@ export default function Products(){
             <h1>This is products page</h1>
             <div>
                 <input value={title} onChange={(e)=>{setTitle(e.target.value)}} className="border-2 rounded-md p-2" type = "text" placeholder ="Enter name of product"/>
+                {validationErrors.title && <p className="text-red-500">Title is required</p>}
                 <input value={description} onChange={(e)=>{setDescription(e.target.value)}} className="border-2 rounded-md p-2" type = "text" placeholder ="Enter the description"/>
+                {validationErrors.description && <p className="text-red-500">Description is required</p>}
                 <input value={price} onChange={(e)=>{setPrice(e.target.value)}} className="border-2 rounded-md p-2" type = "number" placeholder = "Enter the price " />
+                {validationErrors.price && <p className="text-red-500">Price is required</p>}
                 {editingProductId ?
                     (<button className="bg-blue-500 text-white rounded-md p-2" onClick={()=>updateProducts(editingProductId)}>
                     Update Product
